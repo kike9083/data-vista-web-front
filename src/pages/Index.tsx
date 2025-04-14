@@ -10,7 +10,7 @@ import { RecordModal } from "@/components/RecordModal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle, Table as TableIcon, Grid3X3 } from "lucide-react";
+import { AlertCircle, Table as TableIcon, Grid3X3, FormInput } from "lucide-react";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -20,7 +20,7 @@ const Index = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [viewMode, setViewMode] = useState<"table" | "cards">(isMobile ? "cards" : "table");
+  const [viewMode, setViewMode] = useState<"table" | "cards" | "form">(isMobile ? "cards" : "table");
   const [selectedRecord, setSelectedRecord] = useState<DataRecord | null>(null);
   const [showRecordModal, setShowRecordModal] = useState(false);
   
@@ -60,8 +60,11 @@ const Index = () => {
       }
     };
     
-    loadData();
-  }, [currentPage, searchTerm]);
+    // Solo cargar datos si estamos en vista de tabla o tarjetas
+    if (viewMode !== "form") {
+      loadData();
+    }
+  }, [currentPage, searchTerm, viewMode]);
 
   // Función para manejar la búsqueda
   const handleSearch = (term: string) => {
@@ -105,7 +108,9 @@ const Index = () => {
             </p>
           </div>
           
-          <SearchBar onSearch={handleSearch} />
+          <div className="flex gap-2">
+            <SearchBar onSearch={handleSearch} />
+          </div>
         </div>
         
         {error && (
@@ -122,26 +127,32 @@ const Index = () => {
               <div>
                 <CardTitle>Registros</CardTitle>
                 <CardDescription>
-                  {isLoading
-                    ? "Cargando datos..."
-                    : `Mostrando ${data.length} registros`}
+                  {viewMode === "form" 
+                    ? "Formulario de ingreso de datos"
+                    : isLoading
+                      ? "Cargando datos..."
+                      : `Mostrando ${data.length} registros`}
                 </CardDescription>
               </div>
               
               <Tabs 
                 value={viewMode} 
-                onValueChange={(v) => setViewMode(v as "table" | "cards")} 
-                className="w-[200px]"
+                onValueChange={(v) => setViewMode(v as "table" | "cards" | "form")} 
+                className="w-[300px]"
                 defaultValue={viewMode}
               >
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="table" disabled={isLoading}>
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="table" disabled={isLoading && viewMode !== "form"}>
                     <TableIcon className="h-4 w-4 mr-2" />
                     Tabla
                   </TabsTrigger>
-                  <TabsTrigger value="cards" disabled={isLoading}>
+                  <TabsTrigger value="cards" disabled={isLoading && viewMode !== "form"}>
                     <Grid3X3 className="h-4 w-4 mr-2" />
                     Tarjetas
+                  </TabsTrigger>
+                  <TabsTrigger value="form">
+                    <FormInput className="h-4 w-4 mr-2" />
+                    Formulario
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
@@ -183,6 +194,21 @@ const Index = () => {
                       ))}
                     </div>
                   )}
+                </div>
+              )}
+              
+              {viewMode === "form" && (
+                <div className="w-full">
+                  <div className="bg-white rounded-md overflow-hidden">
+                    <iframe 
+                      src="https://n8n-nocodb.kbma6o.easypanel.host/dashboard/#/nc/form/3a35186a-3f8f-4bf9-854c-011324e6ab76" 
+                      width="100%" 
+                      height="800px" 
+                      style={{ border: "none" }} 
+                      title="Formulario NocoDB"
+                      className="w-full"
+                    />
+                  </div>
                 </div>
               )}
             </div>
