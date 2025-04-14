@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Conexión - DataVista</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold mb-6 text-gray-800">Configuración de Conexión</h1>
+            
+            <div class="mb-8">
+                <p class="text-gray-600 mb-4">
+                    Sigue estas instrucciones para conectar DataVista a tu API de NocoDB:
+                </p>
+                
+                <ol class="list-decimal pl-5 space-y-3 text-gray-700">
+                    <li>Accede a tu panel de NocoDB en <a href="https://n8n-nocodb.kbma6o.easypanel.host/dashboard" class="text-blue-600 hover:underline" target="_blank">https://n8n-nocodb.kbma6o.easypanel.host/dashboard</a></li>
+                    <li>En el menú lateral, haz clic en tu cuenta y luego en "Tokens"</li>
+                    <li>Genera un nuevo token de API con permisos de lectura</li>
+                    <li>Copia el token generado</li>
+                    <li>Abre el archivo <code class="bg-gray-200 px-2 py-1 rounded text-sm">/api/data.php</code> en tu servidor</li>
+                    <li>Reemplaza <code class="bg-gray-200 px-2 py-1 rounded text-sm">AQUI_TU_TOKEN_API</code> con el token que copiaste</li>
+                    <li>Guarda el archivo</li>
+                </ol>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-800">
+                            Por seguridad, nunca compartas tu token API. El archivo data.php funciona como un proxy para proteger tus credenciales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold mb-3 text-gray-800">Configuración avanzada</h2>
+                <p class="text-gray-600 mb-3">
+                    Si necesitas personalizar los parámetros de la API:
+                </p>
+                
+                <div class="bg-gray-100 p-4 rounded-md overflow-x-auto">
+<pre class="text-sm text-gray-800">
+// Cambiar el ID de la tabla (si es diferente)
+$api_url = "https://n8n-nocodb.kbma6o.easypanel.host/api/v2/tables/TU_ID_TABLA/records";
+
+// Cambiar el ID de la vista (si es diferente)
+$viewId = "TU_ID_VISTA";
+</pre>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="/" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Volver al Explorador de Datos
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            DataVista &copy; 2025 - Interfaz de datos para NocoDB
+        </div>
+    </div>
+</body>
+</html>

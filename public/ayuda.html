@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - DataVista</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold mb-6 text-gray-800">Centro de Ayuda</h1>
+            
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-3 text-gray-700">Preguntas Frecuentes</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-800">¿Cómo buscar registros?</h3>
+                        <p class="text-gray-600 mt-1">
+                            Utiliza la barra de búsqueda en la parte superior de la página. Puedes buscar por cualquier texto contenido en los registros.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-800">¿Cómo exportar datos?</h3>
+                        <p class="text-gray-600 mt-1">
+                            Haz clic en un registro para ver sus detalles y luego usa el botón "Exportar CSV" para descargar ese registro específico.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-800">¿Cómo cambiar entre vista de tabla y tarjetas?</h3>
+                        <p class="text-gray-600 mt-1">
+                            Utiliza los botones de "Tabla" y "Tarjetas" en la parte superior del panel de registros para cambiar el modo de visualización.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-800">¿La aplicación es segura?</h3>
+                        <p class="text-gray-600 mt-1">
+                            Sí, DataVista utiliza un proxy PHP para proteger tu token API. Los datos se transmiten de forma segura entre tu servidor y NocoDB.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-3 text-gray-700">Guía Rápida</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="border border-gray-200 rounded-md p-4">
+                        <h3 class="font-medium text-gray-800 mb-2">Visualización de Datos</h3>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>La vista de tabla muestra múltiples columnas</li>
+                            <li>La vista de tarjetas es ideal para dispositivos móviles</li>
+                            <li>Haz clic en cualquier registro para ver todos sus detalles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-md p-4">
+                        <h3 class="font-medium text-gray-800 mb-2">Navegación</h3>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Usa la paginación para navegar entre páginas de resultados</li>
+                            <li>El menú superior permite acceder a las distintas secciones</li>
+                            <li>En dispositivos móviles, usa el menú hamburguesa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-800">
+                            Si necesitas ayuda adicional o encuentras algún problema, contacta al administrador del sistema.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="/" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Volver al Explorador de Datos
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            DataVista &copy; 2025 - Interfaz de datos para NocoDB
+        </div>
+    </div>
+</body>
+</html>

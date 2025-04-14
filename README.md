@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
 
-## Project info
+# DataVista - Visualizador de Datos NocoDB
 
-**URL**: https://lovable.dev/projects/b306bcb6-e7b6-4586-8e94-1652a60315fa
+DataVista es una aplicación web moderna, responsive y fácil de usar diseñada para visualizar datos desde [NocoDB](https://www.nocodb.com/). Ofrece una interfaz intuitiva para explorar, filtrar y exportar datos de tus tablas de NocoDB.
 
-## How can I edit this code?
+## Características
 
-There are several ways of editing your application.
+- **Diseño Responsive**: Adaptado para dispositivos móviles, tablets y escritorio
+- **Visualización Flexible**: Vista de tabla o tarjetas según el dispositivo
+- **Paginación**: Navegación eficiente para grandes conjuntos de datos
+- **Búsqueda**: Filtra los registros rápidamente
+- **Detalles de Registros**: Visualiza información completa en ventanas modales
+- **Exportación**: Descarga registros en formato CSV
 
-**Use Lovable**
+## Requisitos
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b306bcb6-e7b6-4586-8e94-1652a60315fa) and start prompting.
+- Servidor Apache con PHP 7.4 o superior
+- Cuenta de NocoDB con acceso a API
+- Token de API de NocoDB
 
-Changes made via Lovable will be committed automatically to this repo.
+## Instalación
 
-**Use your preferred IDE**
+1. Clona este repositorio en tu servidor Apache
+2. Configura el token API en el archivo `public/api/data.php`
+3. Asegúrate de que el directorio `public` sea accesible desde tu servidor web
+4. Abre la página en tu navegador
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Configuración del API
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Para conectar la aplicación a tu API de NocoDB:
 
-Follow these steps:
+1. Edita el archivo `public/api/data.php`
+2. Reemplaza `AQUI_TU_TOKEN_API` con tu token de API de NocoDB
+3. Si es necesario, actualiza las URLs y los IDs de tabla/vista
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```php
+// Ejemplo de configuración
+$API_TOKEN = "tu_token_aqui";
+$api_url = "https://tu-instancia-nocodb.com/api/v2/tables/tu_id_tabla/records";
+$viewId = "tu_id_vista";
 ```
 
-**Edit a file directly in GitHub**
+## Personalización
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+DataVista puede adaptarse fácilmente a tus necesidades específicas:
 
-**Use GitHub Codespaces**
+- Modifica los colores y estilos en `tailwind.config.ts`
+- Añade o quita columnas en el componente `DataTable.tsx`
+- Personaliza el formato de visualización en `DataCard.tsx`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Mejores Prácticas de Seguridad
 
-## What technologies are used for this project?
+- El token API nunca debe ser expuesto en el frontend
+- El archivo `data.php` actúa como un proxy seguro
+- Considera implementar autenticación para la aplicación web
+- Limita los permisos del token API a solo lectura si es posible
 
-This project is built with:
+## Soporte
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/b306bcb6-e7b6-4586-8e94-1652a60315fa) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Si encuentras algún problema o tienes sugerencias, por favor crea un issue en este repositorio.
