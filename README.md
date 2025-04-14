@@ -1,7 +1,7 @@
 
 # DataVista - Visualizador de Datos NocoDB
 
-DataVista es una aplicación web moderna, responsive y fácil de usar diseñada para visualizar datos desde [NocoDB](https://www.nocodb.com/). Ofrece una interfaz intuitiva para explorar, filtrar y exportar datos de tus tablas de NocoDB.
+DataVista es una aplicación web moderna, pepe, responsive y fácil de usar diseñada para visualizar datos desde [NocoDB](https://www.nocodb.com/). Ofrece una interfaz intuitiva para explorar, filtrar y exportar datos de tus tablas de NocoDB.
 
 ## Características
 
