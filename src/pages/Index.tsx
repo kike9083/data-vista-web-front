@@ -128,7 +128,12 @@ const Index = () => {
                 </CardDescription>
               </div>
               
-              <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as "table" | "cards")} className="w-[200px]">
+              <Tabs 
+                value={viewMode} 
+                onValueChange={(v) => setViewMode(v as "table" | "cards")} 
+                className="w-[200px]"
+                defaultValue={viewMode}
+              >
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="table" disabled={isLoading}>
                     <TableIcon className="h-4 w-4 mr-2" />
@@ -144,39 +149,43 @@ const Index = () => {
           </CardHeader>
           
           <CardContent>
-            <TabsContent value="table" className="mt-0">
-              <DataTable
-                data={data}
-                isLoading={isLoading}
-                columns={tableColumns}
-                pageCount={pageCount}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-                onViewDetails={handleViewDetails}
-              />
-            </TabsContent>
-            
-            <TabsContent value="cards" className="mt-0">
-              {isLoading ? (
-                <div className="flex justify-center items-center h-40">
-                  <p>Cargando datos...</p>
-                </div>
-              ) : data.length === 0 ? (
-                <div className="flex justify-center items-center h-40">
-                  <p>No se encontraron registros</p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {data.map((record) => (
-                    <DataCard
-                      key={record.id}
-                      record={record}
-                      onViewDetails={handleViewDetails}
-                    />
-                  ))}
+            <div>
+              {viewMode === "table" && (
+                <DataTable
+                  data={data}
+                  isLoading={isLoading}
+                  columns={tableColumns}
+                  pageCount={pageCount}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                  onViewDetails={handleViewDetails}
+                />
+              )}
+              
+              {viewMode === "cards" && (
+                <div>
+                  {isLoading ? (
+                    <div className="flex justify-center items-center h-40">
+                      <p>Cargando datos...</p>
+                    </div>
+                  ) : data.length === 0 ? (
+                    <div className="flex justify-center items-center h-40">
+                      <p>No se encontraron registros</p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {data.map((record) => (
+                        <DataCard
+                          key={record.id}
+                          record={record}
+                          onViewDetails={handleViewDetails}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
-            </TabsContent>
+            </div>
           </CardContent>
         </Card>
       </main>
